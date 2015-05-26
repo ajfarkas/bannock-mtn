@@ -7,11 +7,12 @@ var http = require('http'),
 var stations = {
   main: 'ME/Industry',
   pws: [
-    'KMESTARK2',
+    'KMESTARK2', //maine
     'MMERM1',
     'MNESM1',
     'KMEFARMI3',
-    'KMENORRI4'
+    'KMENORRI4',
+    'KCAOAKLA44'//oakland
   ]
 }
 var msDay = 86400000, //1 day in ms
@@ -34,7 +35,7 @@ function getHistory() {
   //convert now to YYYYMMDD format
   yesterday = getDate(now)
   //call to Wunderground API
-  http.get('http://api.wunderground.com/api/9f206693050a1722/history_'+yesterday+'/q/pws:'+stations.pws[0]+'.json', function(res) {
+  http.get('http://api.wunderground.com/api/[api_key]/history_'+yesterday+'/q/pws:'+stations.pws[0]+'.json', function(res) {
     console.log('CONNECTED')
     res.setEncoding('utf8')
     res.on('error', function(err) {
@@ -100,7 +101,6 @@ function concatAll(select) {
             result.push(JSON.stringify(d))
           })
         }
-        // if (file == files[0]) console.log(JSON.parse(data))
         //reduce counter by 1
         filesLen--
         if (filesLen <= 0) {
@@ -121,7 +121,8 @@ if (command == 'history' && span) {
   if (startDate) now -= msDay * startDate
 
   getHistory()
-  var runHistory = setInterval(getHistory, 12000)
+  if (span > 1)
+    var runHistory = setInterval(getHistory, 12000)
 }
 else if (command == 'concat') {
   var select = [],

@@ -1,5 +1,7 @@
 # datafiles
 
+.DS_Store
+.sass-cache
 node/groups
-node/json
-node/json2014
+node/json*
+
