@@ -41,8 +41,8 @@ select {
   display: inline-block;
   width: 600px;
   height: 300px;
-  // padding: 0 calc(50vw - 300px);
   background-color: white;
+  background-color: rgba(255,255,255,0.5);
 }
 
 svg { margin: -2px 0; }
@@ -77,10 +77,22 @@ path, line {
 }
 
 .tick line,
-.domain {
-  stroke: $color2;
-}
+.domain { stroke: $color2; }
 
-.tick text { 
-  fill: $color2; 
+.tick text { fill: $color2; }
+
+#temp-response,
+#humidityresponse {
+  display: inline-block;
+  height: 300px;
+  vertical-align: top;
+  color: white;
 }
+.response {
+  font: {
+    size: rem(40);
+    weight: 600;
+  }
+}
+.response-more { }
+

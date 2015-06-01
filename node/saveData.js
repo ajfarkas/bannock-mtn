@@ -35,7 +35,7 @@ function getHistory() {
   //convert now to YYYYMMDD format
   yesterday = getDate(now)
   //call to Wunderground API
-  http.get('http://api.wunderground.com/api/[api_key]/history_'+yesterday+'/q/pws:'+stations.pws[0]+'.json', function(res) {
+  http.get('http://api.wunderground.com/api/9f206693050a1722/history_'+yesterday+'/q/pws:'+stations.pws[0]+'.json', function(res) {
     console.log('CONNECTED')
     res.setEncoding('utf8')
     res.on('error', function(err) {

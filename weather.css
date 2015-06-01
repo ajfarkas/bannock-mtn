@@ -78,7 +78,8 @@ select {
   display: inline-block;
   width: 600px;
   height: 300px;
-  background-color: white; }
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5); }
 
 svg {
   margin: -2px 0; }
@@ -121,3 +122,14 @@ path, line {
 
 .tick text {
   fill: #3e3e3e; }
+
+#temp-response,
+#humidityresponse {
+  display: inline-block;
+  height: 300px;
+  vertical-align: top;
+  color: white; }
+
+.response {
+  font-size: 4rem;
+  font-weight: 600; }
