@@ -1,0 +1,98 @@
+@import 'vars';
+@import 'mixins';
+@import 'resets';
+
+h1, h2 { 
+  font-weight: 300;
+  text-align: center; 
+}
+h1 {
+  font-size: rem(30);
+  text-transform: uppercase;
+}
+h2 {
+  font-size: rem(18);
+  margin-bottom: 10px;
+}
+h3 {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font:{
+    weight: 300;
+    size: rem(15);
+  }
+}
+
+select {
+  @include appearance(none);
+  background: transparent;
+  border: 1px solid #666;
+  box-shadow: inset 0px 1px #e3e3e3;
+  border-radius: 3px;
+  padding: 5px 8px;
+  font-size: rem(20);
+}
+
+#temp, #humidity {
+  position: relative;
+  display: inline-block;
+  width: 600px;
+  height: 300px;
+  background-color: white;
+  background-color: rgba(255,255,255,0.5);
+}
+
+svg { margin: -2px 0; }
+
+.day {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: white;
+}
+
+text { 
+  font:{
+    size: rem(4);
+    weight: 300;
+  }
+  &.title { font-size: rem(13);}
+}
+
+path, line {
+  fill: none;
+  stroke-width: .3px;
+}
+
+#rain { fill: #dff0ff; }
+.high, .low { stroke: none; }
+.high { fill: url(#hotCold); }
+.low { fill: white; }
+.humidity { 
+  stroke: black; 
+  fill: url(#rain);
+}
+
+.tick line,
+.domain { stroke: $color2; }
+
+.tick text { fill: $color2; }
+
+#temp-response,
+#humidityresponse {
+  display: inline-block;
+  height: 300px;
+  vertical-align: top;
+  color: white;
+}
+.response {
+  font: {
+    size: rem(40);
+    weight: 600;
+  }
+}
+.response-more { }
+

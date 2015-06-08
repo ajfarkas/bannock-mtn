@@ -1,0 +1,49 @@
+//Standard Resets
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+footer, .push {
+  height: $footer-height;
+}
+
+html { font-size: 62.5%; }
+
+body { 
+  padding-top: 10px;
+  height: 100vh;
+  background-color: $bg-color;
+  background: $bg-grad;
+  font-family: $font-primary;
+  font-size: rem(13);
+  // @include breakpoint(720) { font-size: rem(16); }
+  //adjust iPhone font-sizes
+  @media screen and (max-device-width: 480px) and (orientation: landscape) {
+    -webkit-text-size-adjust: 80%;
+  }
+  color: $color1;
+}
+
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;  
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font: {
+    family: inherit;
+    size: inherit;
+    weight: inherit;
+    style: inherit;
+  }
+}
+a.underline, 
+.underline { text-decoration: underline; }
+
+h1, h2, h3, h4, h5, h6, p, code { line-height: 1.3; }
