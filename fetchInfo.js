@@ -1,5 +1,5 @@
 "use strict"
-var levelup = require('level')
+var levelup = require('levelup')
 var http = require('http')
 var fs = require('fs')
 var config = require('./config')
@@ -85,6 +85,7 @@ fetch.concatAll = function(db, options, range) {
       //reduce counter by 1
       rangeLen--
       if (rangeLen <= 0) {
+        console.log('concat done.')
         return fetch.data = result
       }
     })
