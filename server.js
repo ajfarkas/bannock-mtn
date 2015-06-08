@@ -5,7 +5,6 @@ var config = require('./config')
 var db = require('./leveldb')
 var fetch = require('./fetchInfo')
 
-// db.delete(['20150530', '20150528', '20150601'])
 db.checkForUpdate()
 http.createServer(function(req, res) {
   write(res, req.url)
@@ -23,7 +22,6 @@ function callJSON(res) {
     }
   }, 100)
 }
-
 
 function write(res, file, options) {
   if (file == '/') 
@@ -43,10 +41,3 @@ function write(res, file, options) {
     res.end()
   })
 }
-
-// function serveFile(res, file, data) {
-//   res.writeHead(200, {'Content-Type': mime.lookup(file)})
-//   console.log(mime.lookup(file))
-//   res.write(data)
-// }
-
