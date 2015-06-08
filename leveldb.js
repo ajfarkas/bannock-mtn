@@ -1,5 +1,5 @@
 var config = require('./config')
-var levelup = require('levelup')
+var levelup = require('level')
 var fetch = require('./fetchInfo')
 
 var db = levelup(config.db)

@@ -1,5 +1,5 @@
 "use strict"
-var levelup = require('levelup')
+var levelup = require('level')
 var http = require('http')
 var fs = require('fs')
 var config = require('./config')
