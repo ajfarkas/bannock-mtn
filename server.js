@@ -1,0 +1,56 @@
+var http = require('http')
+var fs = require('fs')
+var mime = require('mime')
+var config = require('./config')
+var db = require('./leveldb')
+var fetch = require('./fetchInfo')
+
+// db.delete(['20150530', '20150528', '20150601'])
+db.checkForUpdate()
+http.createServer(function(req, res) {
+  write(res, req.url)
+}).listen(config.port)
+console.log('server running on port '+config.port+'.')
+
+function callJSON(res) {
+  var waitForData = setInterval(function() {
+    console.log('waiting...')
+    if (fetch.data) {
+      clearInterval(waitForData)
+      console.log('results to server')
+      res.write(JSON.stringify(fetch.data))
+      res.end()
+
+      // res.write('<script>var weather = '+fetch.data+'</script>')
+      // // write('weather.js')
+      // res.end()
+    }
+  }, 100)
+}
+
+
+function write(res, file, options) {
+  console.log(file)
+  if (file == '/') 
+    file = 'index.html'
+  else if (file.match(/\.json/) ) {
+    console.log('match')
+    return callJSON(res)
+  }
+  else 
+    file = file.replace('/', '')
+
+  options = options || null
+  fs.readFile(file, options, function(err, data) {
+    if (err) return console.error(err)
+    serveFile(res, file, data)
+    res.end()
+  })
+}
+
+function serveFile(res, file, data) {
+  res.writeHead(200, {'Content-Type': mime.lookup(file)})
+  console.log(mime.lookup(file))
+  res.write(data)
+}
+

@@ -46,8 +46,9 @@ line.yAxis = d3.svg.axis().scale(line.y).orient('left').tickSize(2, 0)
 
 // var formatDate = d3.time.format('%b-%d %H:%M')
 //call weather data
-d3.json('node/groups/bannock_weather.json', function(err, data) {
+d3.json('bannock_weather.json', function(err, data) {
   if (err) console.error(err)
+console.log(data[0])  
   //account for local timezone offset in min, compared to GMT-4
   var offset = ( (new Date()).getTimezoneOffset() - 240) * -60000
 
