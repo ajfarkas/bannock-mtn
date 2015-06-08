@@ -9,7 +9,7 @@ var fetch = require('./fetchInfo')
 db.checkForUpdate()
 http.createServer(function(req, res) {
   write(res, req.url)
-}).listen(config.port)
+}).listen(config.port, config.ip)
 console.log('server running on port '+config.port+'.')
 
 function callJSON(res) {
@@ -20,21 +20,15 @@ function callJSON(res) {
       console.log('results to server')
       res.write(JSON.stringify(fetch.data))
       res.end()
-
-      // res.write('<script>var weather = '+fetch.data+'</script>')
-      // // write('weather.js')
-      // res.end()
     }
   }, 100)
 }
 
 
 function write(res, file, options) {
-  console.log(file)
   if (file == '/') 
     file = 'index.html'
   else if (file.match(/\.json/) ) {
-    console.log('match')
     return callJSON(res)
   }
   else 
@@ -43,14 +37,16 @@ function write(res, file, options) {
   options = options || null
   fs.readFile(file, options, function(err, data) {
     if (err) return console.error(err)
-    serveFile(res, file, data)
+    // serveFile(res, file, data)
+    res.writeHead(200, {'Content-Type': mime.lookup(file)})
+    res.write(data)
     res.end()
   })
 }
 
-function serveFile(res, file, data) {
-  res.writeHead(200, {'Content-Type': mime.lookup(file)})
-  console.log(mime.lookup(file))
-  res.write(data)
-}
+// function serveFile(res, file, data) {
+//   res.writeHead(200, {'Content-Type': mime.lookup(file)})
+//   console.log(mime.lookup(file))
+//   res.write(data)
+// }
 

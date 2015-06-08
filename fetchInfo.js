@@ -84,15 +84,7 @@ fetch.concatAll = function(db, options, range) {
       //reduce counter by 1
       rangeLen--
       if (rangeLen <= 0) {
-        console.log('results: '+result.length)
         return fetch.data = result
-        // var checkForGets = setInterval(function() {
-        //   if (result.length == rangeLen) {
-        //     console.log(result.length)
-        //     clearInterval(checkForGets)
-        //     return 'hello'//result
-        //   }
-        // }, 50)
       }
     })
   })
