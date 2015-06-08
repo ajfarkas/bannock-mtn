@@ -6,9 +6,9 @@
   "README": "",
   "license": "MIT",
   "dependencies": {
-    "leveldown": "^1.1.0",
-    "levelup": "^1.2.0",
-    "mime": "^1.3.4"
+    // "leveldown": "^1.1.0",
+    // "levelup": "^1.2.0",
+    // "mime": "^1.3.4"
   },
   "scripts": {
     "start": "supervisor server.js"

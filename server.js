@@ -1,9 +1,9 @@
 var http = require('http')
-var fs = require('fs')
-var mime = require('mime')
-var config = require('./config')
-var db = require('./leveldb')
-var fetch = require('./fetchInfo')
+// var fs = require('fs')
+// var mime = require('mime')
+// var config = require('./config')
+// var db = require('./leveldb')
+// var fetch = require('./fetchInfo')
 
 // db.checkForUpdate()
 // http.createServer(function(req, res) {
