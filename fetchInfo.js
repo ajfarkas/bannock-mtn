@@ -2,6 +2,7 @@
 var levelup = require('levelup')
 var http = require('http')
 var fs = require('fs')
+var config = require('./config')
 
 var fetch = {}
 
@@ -21,7 +22,7 @@ fetch.getHistory = function(db, date, concat) {
   var weather
 
   //call to Wunderground API
-  http.get('http://api.wunderground.com/api/9f206693050a1722/history_'+date+'/q/pws:'+this.station+'.json', function(res) {
+  http.get('http://api.wunderground.com/api/'+config.token+'/history_'+date+'/q/pws:'+this.station+'.json', function(res) {
     console.log('CONNECTED')
     res.setEncoding('utf8')
     res.on('error', function(err) {
