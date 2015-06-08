@@ -8,7 +8,7 @@
   "dependencies": {
   },
   "scripts": {
-    "start": "supervisor server.js"
+    "start": "node server.js"
   },
   "main": "server.js"
 }
