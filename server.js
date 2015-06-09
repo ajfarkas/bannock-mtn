@@ -35,7 +35,6 @@ function write(res, file, options) {
   options = options || null
   fs.readFile(file, options, function(err, data) {
     if (err) return console.error(err)
-    // serveFile(res, file, data)
     res.writeHead(200, {'Content-Type': mime.lookup(file)})
     res.write(data)
     res.end()

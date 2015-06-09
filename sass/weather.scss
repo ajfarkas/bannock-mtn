@@ -3,7 +3,10 @@
 @import 'resets';
 
 h1, h2 { 
-  font-weight: 300;
+  font: {
+    family: OpenSans, sans-serif;
+    weight: 300;
+  }
   text-align: center; 
 }
 h1 {
@@ -26,23 +29,65 @@ h3 {
   }
 }
 
-select {
-  @include appearance(none);
-  background: transparent;
-  border: 1px solid #666;
-  box-shadow: inset 0px 1px #e3e3e3;
-  border-radius: 3px;
-  padding: 5px 8px;
-  font-size: rem(20);
+.hidden { display: none !important; }
+
+.banner {
+
 }
 
-#temp, #humidity {
+#mission {
+  width: rem(550);
+  margin: 0 auto;
+}
+
+select {
+  @include appearance(none);
+  width: 100%;
+  padding: 10px 12px;
+  background:{
+    color: white;
+    image: url(images/sprites.png);
+    repeat: no-repeat;
+    position: calc(100% - 1.1rem) rem(13);
+    size: rem(9);
+  } 
+  border: 1px solid #666;
+  border-radius: 4px;
+  // box-shadow: inset 0px 1px #e3e3e3;
+  font:{
+    family: HelveticaNeue, sans-serif;
+    size: rem(20);
+    weight: 600;
+  }
+}
+
+.response-container {
+  width: 70%;
+  margin: 40px auto 0;
+  background-color: white;
+}
+
+.graph {
   position: relative;
   display: inline-block;
-  width: 600px;
-  height: 300px;
-  background-color: white;
-  background-color: rgba(255,255,255,0.5);
+  width: 54%;
+  // height: 300px;
+  margin: 2%;
+  background-color: aliceblue;
+}
+.rain-graph {
+  background-image: linear-gradient(
+    to bottom,
+    $grad-hot 30%,
+    $grad-cold 80%
+  );
+}
+.jacket-graph {
+  background-image: linear-gradient(
+    to bottom, 
+    $grad-hot 0%,
+    $grad-cold 50%
+  );
 }
 
 svg { margin: -2px 0; }
@@ -67,7 +112,7 @@ path, line {
   stroke-width: .3px;
 }
 
-#rain { fill: #dff0ff; }
+#rain { fill: $grad-cold; }
 .high, .low { stroke: none; }
 .high { fill: url(#hotCold); }
 .low { fill: white; }
@@ -81,18 +126,37 @@ path, line {
 
 .tick text { fill: $color2; }
 
-#temp-response,
-#humidityresponse {
+.text {
   display: inline-block;
-  height: 300px;
+  width: 40%;
+  // height: 300px;
+  box-sizing: border-box;
+  padding: 3% 2%;
   vertical-align: top;
-  color: white;
 }
-.response {
+.towel-text {
+  width: 94%;
+}
+
+.response-text {
+  line-height: 1;
   font: {
-    size: rem(40);
+    size: rem(60);
     weight: 600;
   }
+  color: #45A0F8;
 }
-.response-more { }
+.response-more {
+  margin-top: rem(10);
+  font-size: rem(20);
+}
+
+#mtn-1 { fill: #CAE2FF; }
+#mtn-2 { fill: #B5E0F8; }
+#mtn-3 { fill: #74C6FF; }
+#mtn-4 { fill: white; }
+#coat-body { fill: #A3DBEF; }
+#coat-trim { fill: black; }
+#coat-hood { fill: white; }
+
 

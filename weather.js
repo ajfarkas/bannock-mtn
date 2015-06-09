@@ -27,12 +27,12 @@ var stations = {
 //config
 var s = {
   width: 200,
-  height: 100,
+  height: 120,
   m: {
     top: 20,
-    right: 20,
-    bottom: 25,
-    left: 30
+    right: 10,
+    bottom: 20,
+    left: 20
   }
 }
 s.plot = { w: s.width - s.m.left - s.m.right, h: s.height - s.m.top - s.m.bottom }
@@ -110,13 +110,17 @@ console.log(data[0])
   //create svg definitions once for access by all SVG's
   svgDefs()
   //make temperature range graph (2 area graphs)
-  makeLineGraph(weather.range, '#temp', 'temp', 'low', 'clipping')
-  makeLineGraph(weather.range, '#temp', 'temp', 'high', 'low')
+  makeLineGraph(weather.range, '.jacket-graph', 'temp', 'low', 'clipping')
+  makeLineGraph(weather.range, '.jacket-graph', 'temp', 'high', 'low')
   //make humidity graph (area)
-  makeLineGraph(weather.range, '#humidity', 'rel-humidity', 'humidity', true)
+  makeLineGraph(weather.range, '.rain-graph', 'rel-humidity', 'humidity', true)
 
   var question = d3.select('select[name=mission]').node()
-  findAnswer.call(question)
+  findAnswer(question.value)
+})
+
+d3.select('select[name=mission]').on('change', function() {
+  findAnswer(this.value)
 })
 
 //create SVG definitions
@@ -249,27 +253,67 @@ function relHumidity(temp, dewpt, farenheit) {
 }
 
 //answer dropdown input question
-function findAnswer() {
-  //check which question is asked
-  if (this.value == 'jacket') {
-    var wkAvgHigh = d3.mean(weather.range, function(d, i){ if(i < 7)return d.high }),
-        wkAvgLow = d3.mean(weather.range, function(d, i){ if(i < 7)return d.low })
+function findAnswer(value) {
+  hideOthers(value)
+  var node = d3.select('.'+value+'-text')
+  if (node.html().length === 0) {
+    //check which question is asked
+    if (value == 'jacket') {
+      var wkAvgHigh = d3.mean(weather.range, function(d, i){ if(i < 7)return d.high }),
+          wkAvgLow = d3.mean(weather.range, function(d, i){ if(i < 7)return d.low })
 
-    var needJacket = wkAvgLow >= 65 ? 'No'
-      : wkAvgLow > 50 ? 'Maybe a sweatshirt'
-      : 'Yes'
-    var dog = wkAvgLow >= 60 ? false 
-      : wkAvgLow > 45 ? 'and consider bringing at least one dog'
-      : 'and consider bringing at least two dogs for warmth'
-    
-    return fillAnswer(d3.select('#temp-response'), needJacket, dog)
+      var prime = wkAvgLow >= 65 
+        ? 'No'
+        : wkAvgLow > 50 
+          ? 'Maybe a Sweatshirt'
+          : 'Yes'
+      var second = wkAvgLow >= 60 
+        ? false 
+        : wkAvgLow > 45 
+          ? 'and consider bringing at least one dog'
+          : 'and consider bringing at least two dogs for warmth'
+    }
+    else if (value == 'rain') {
+      var wkAvgHumid = d3.mean(weather.range, function(d, i) { if(i < 7)return d.humidity })
+
+      var prime = wkAvgHumid > 70
+        ? 'Yes'
+        : 'Not Likely'
+      var second = wkAvgHumid > 70
+        ? 'better safe than sorry'
+        : false
+    }
+    else if (value == 'towel') {
+      var wkAvgHigh = d3.mean(weather.range, function(d, i){ if(i < 7)return d.high }),
+          wkAvgHumid = d3.mean(weather.range, function(d, i) { if(i < 7)return d.humidity })
+
+      var prime = 'All hoopy froods bring their towels'
+      var second = wkAvgHigh > 70
+        ? wkAvgHumid < 70
+          ? "and there's a good chance of swimmin' weather"
+          : "you might need it for these dog days of summer"
+        : wkAvgHumid < 70
+          ? "the ground is pretty dirty, after all"
+          : "you could catch a cold if you don't keep dry"
+    }
+    return fillAnswer(node, prime, second)
+  }
+  //show selected response, hide others
+  function hideOthers(selected) {
+    d3.selectAll('.response').each(function() {
+      var res = d3.select(this)
+      res.classed('hidden', function() {
+        return !res.classed(selected)
+      })
+
+    })
   }
 }
 //write answer to document
 function fillAnswer(container, response, secondary) {
   //answer primary question
   container.append('p')
-    .attr('class', 'response')
+    .attr('class', 'response-text')
     .text(response+'.')
   //add additional info
   if (secondary) {
