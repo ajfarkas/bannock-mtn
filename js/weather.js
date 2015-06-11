@@ -1,5 +1,4 @@
 /* shamp latlong: 44.732092, -70.035782
-**
 ** wunderground CA station: KCAOAKLA44
 */
 var ws = require('./websockets')
