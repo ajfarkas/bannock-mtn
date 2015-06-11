@@ -1,17 +1,9 @@
 /* shamp latlong: 44.732092, -70.035782
 **
-** NOAA Stations
-** "COOP:172765; FARMINGTON, ME US"
-** "COOP:174927; MADISON, ME US"
-** "COOP:175736; NEW SHARON, ME US"
-** "GHCND:US1MEFR0004; NEW SHARON 2.0 NW, ME US"
-** "GHCND:US1MESM0001; MADISON 1.1 SSE, ME US"
-** "GHCND:USC00172765; FARMINGTON, ME US"
-** "GHCND:USC00174927; MADISON, ME US"
-** "GHCND:USC00175736; NEW SHARON, ME US"
-**
 ** wunderground CA station: KCAOAKLA44
 */
+var ws = require('./websockets')
+ws.createNew()
 
 var weather = []
 var stations = {

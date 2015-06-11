@@ -1,15 +1,22 @@
 var http = require('http')
 var fs = require('fs')
 var mime = require('mime')
-var config = require('./config')
-var db = require('./leveldb')
-var fetch = require('./fetchInfo')
+var config = require('./node/config')
+var db = require('./node/leveldb')
+var fetch = require('./node/fetchInfo')
+var socket = require('./socket')
 
+//update db
 db.checkForUpdate()
-http.createServer(function(req, res) {
+
+//initialize server
+var server = http.createServer(function(req, res) {
+  //serve views
   write(res, req.url)
 }).listen(config.port, config.ip)
 console.log('server running on port '+config.port+'.')
+//create new websocket
+socket.createNew('ws', server)
 
 function callJSON(res) {
   var waitForData = setInterval(function() {
