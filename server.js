@@ -7,7 +7,7 @@ var fetch = require('./node/fetchInfo')
 var socket = require('./socket')
 
 //update db
-db.checkForUpdate()
+
 
 //initialize server
 var server = http.createServer(function(req, res) {
@@ -15,8 +15,7 @@ var server = http.createServer(function(req, res) {
   write(res, req.url)
 }).listen(config.port, config.ip)
 console.log('server running on port '+config.port+'.')
-//create new websocket
-socket.createNew('ws', server)
+
 
 function callJSON(res) {
   var waitForData = setInterval(function() {
@@ -31,8 +30,12 @@ function callJSON(res) {
 }
 
 function write(res, file, options) {
-  if (file == '/') 
+  if (file == '/') {
     file = 'index.html'
+    db.checkForUpdate()
+    //create new websocket
+    socket.createNew('ws', server)
+  }
   else if (file.match(/\.json/) ) {
     return callJSON(res)
   }
