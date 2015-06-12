@@ -14,7 +14,7 @@ html { font-size: 62.5%; }
 
 body { 
   padding-top: 10px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $bg-color;
   background: $bg-grad;
   font-family: $font-primary;

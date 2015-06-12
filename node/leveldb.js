@@ -33,6 +33,7 @@ dbExport.checkForUpdate = function() {
   for (var i = date - fetch.msDay; i >= date - fetch.msDay*30; i -= fetch.msDay) {
     daysRequested.push(fetch.getDate(i) )
   }
+  console.log(yesterday)
   //find entries from last month
   db.createKeyStream({gte: dMinus30, lte: yesterday+'\xff'})
     .on('error', function(err) { console.error(err) })

@@ -1,8 +1,8 @@
 /* shamp latlong: 44.732092, -70.035782
 ** wunderground CA station: KCAOAKLA44
 */
-var ws = require('./websockets')
-ws.createNew()
+// var ws = require('./websockets')
+// ws.createNew()
 
 var weather = []
 var stations = {

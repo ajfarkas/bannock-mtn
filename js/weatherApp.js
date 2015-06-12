@@ -2,8 +2,8 @@
 /* shamp latlong: 44.732092, -70.035782
 ** wunderground CA station: KCAOAKLA44
 */
-var ws = require('./websockets')
-ws.createNew()
+// var ws = require('./websockets')
+// ws.createNew()
 
 var weather = []
 var stations = {
@@ -317,23 +317,4 @@ function fillAnswer(container, response, secondary) {
 
 //raindrop: <path class="drop" d="M20,40 L15,50 C15,54 18,55 20,55 C22,55 25,54 25,50 L20,40z"></path>
 
-},{"./websockets":2}],2:[function(require,module,exports){
-var socket = {}
-
-socket.createNew = function(){
-  var protocol = window.location.protocol == 'https:' ? 'wss' : 'ws'
-  socket.ws = new WebSocket(protocol+'://'+window.location.host)
-
-  socket.ws.onerror = function(err) {
-    console.error(err)
-  }
-  socket.ws.onopen = function(e) {
-    socket.ws.send('client-side connection open!')
-  }
-  socket.ws.onmessage = function(e) {
-    console.log(e.data)
-  }
-}
-
-module.exports = socket
 },{}]},{},[1]);
