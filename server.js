@@ -6,9 +6,6 @@ var db = require('./node/leveldb')
 var fetch = require('./node/fetchInfo')
 var socket = require('./socket')
 
-//update db
-
-
 //initialize server
 var server = http.createServer(function(req, res) {
   //serve views
@@ -32,11 +29,12 @@ function callJSON(res) {
 function write(res, file, options) {
   if (file == '/') {
     file = 'index.html'
+    //update db
     db.checkForUpdate()
     //create new websocket
     socket.createNew('ws', server)
   }
-  else if (file.match(/\.json/) ) {
+  else if (file.match('bannock_weather.json') ) {
     return callJSON(res)
   }
   else 

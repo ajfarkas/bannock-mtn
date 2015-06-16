@@ -1,16 +1,11 @@
 var config = require('./config')
-var levelup = require('levelup')
+var levelup = require('level-browserify')
 var fetch = require('./fetchInfo')
 
 var db = levelup(config.db)
 var dbExport = {}
 
 var dataOptions = ['date', 'tempi', 'dewpti', 'wspdi', 'precip_ratei']
-
-db.get('20150604', function(err, value) {
-  if (err) console.error(err)
-  dbExport.test = value
-})
 
 dbExport.delete = function(range) {
   range.forEach(function(date) {

@@ -314,4 +314,6 @@ function fillAnswer(container, response, secondary) {
   }
 }
 
+var comments = require('./comments')
+
 //raindrop: <path class="drop" d="M20,40 L15,50 C15,54 18,55 20,55 C22,55 25,54 25,50 L20,40z"></path>

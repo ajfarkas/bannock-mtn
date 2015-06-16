@@ -1,5 +1,5 @@
 "use strict"
-var levelup = require('levelup')
+var levelup = require('level-browserify')
 var http = require('http')
 var fs = require('fs')
 var config = require('./config')
@@ -33,10 +33,9 @@ fetch.getHistory = function(db, date, concat) {
     })
     res.on('end', function() {
       console.log('cleaning up ' + date)
+
       //only pull weather observations
-      weather = JSON.parse(weather.replace(/undefined\n/, '') ).history.observations
-      //write JSON as string
-      var wd = weather[0].date
+      weather = JSON.parse(weather.replace(/undefined\n/, '') ).history.observations || null
 
       db.put(date, weather, {valueEncoding: 'json'}, function(err) {
         if (err) return console.error(err)
