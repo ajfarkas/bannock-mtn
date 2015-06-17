@@ -2,7 +2,9 @@
 
 .DS_Store
 .sass-cache
-CLI_Node
+js/.module-cache
 node_modules
+
+CLI_Node
 libs
 weatherdb/*

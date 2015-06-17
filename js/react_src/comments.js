@@ -1,16 +1,6 @@
 var React = require('react')
 var marked = require('marked')
-var config = require('../node/config')
-var levelup = require('level-browserify')
-//define level db
-var db = levelup(config.db)
-db.createKeyStream()
-  .on('data', function(key) {
-    console.log(key)
-  })
-  .on('error', function(err) {
-    console.error(err)
-  })
+var socket = io()
 
 var CommentBox = React.createClass({
   loadCommentsFromServer: function() {

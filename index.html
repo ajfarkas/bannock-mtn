@@ -6,7 +6,7 @@
   <title>Maine Weather Trends</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <link href="weather.css" rel="stylesheet" type="text/css"/>
-  <script src="https://fb.me/react-0.13.3.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 </head>
 <body>
@@ -46,19 +46,19 @@
     ><div class="rain-text text response rain hidden"></div>
     <div class="towel-text text response towel hidden"></div>
   </div>
-  <section id="comments-container">
-    <p>comments not loaded.</p>
-  </section>
-  <!-- <section class="chat-client">
+  <section id="notes-container" class="not-loaded">
+    <div class="notes-box">
+      <p class="load-msg">comments not loaded.</p>
+    </div>
     <h4>Leave a note:</h4>
-    <fieldset id="chat-input">
-      <label for="chat-name">Name</label>
-      <input id="chat-name" type="text" required="true"></input>
-      <label for="chat-msg">Note</label>
-      <textarea id="chat-msg" required="true" spellcheck="true"></textarea>
+    <fieldset id="note-input">
+      <label for="note-name">Name</label>
+      <input id="note-name" type="text" required="true"></input>
+      <label for="note-msg">Note</label>
+      <textarea id="note-msg" required="true" spellcheck="on"></textarea>
+      <button type="button">Submit</button>
     </fieldset>
-  </section> -->
-
+  </section>
 
 </body>
 <script src="js/weatherApp.js"></script>

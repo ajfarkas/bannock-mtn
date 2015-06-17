@@ -1,8 +1,6 @@
 /* shamp latlong: 44.732092, -70.035782
 ** wunderground CA station: KCAOAKLA44
 */
-// var ws = require('./websockets')
-// ws.createNew()
 
 var weather = []
 var stations = {
@@ -314,6 +312,5 @@ function fillAnswer(container, response, secondary) {
   }
 }
 
-var comments = require('./comments')
 
 //raindrop: <path class="drop" d="M20,40 L15,50 C15,54 18,55 20,55 C22,55 25,54 25,50 L20,40z"></path>

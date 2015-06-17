@@ -162,19 +162,18 @@ path, line {
 }
 
 /*Chat input*/
-#chat-name,
-#chat-msg {
+#note-name,
+#note-msg {
   background-color: transparent;
   box-shadow: inset 0 -1px 0 0 black;
 }
-#chat-msg {
+#note-msg {
+  @include appearance(none);
   vertical-align: top;
   text-decoration: underline;
   min-height: 1.6rem;
   width: 200px;
   resize: none;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 

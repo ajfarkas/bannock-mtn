@@ -1,10 +1,11 @@
 var http = require('http')
 var fs = require('fs')
 var mime = require('mime')
+
 var config = require('./node/config')
 var db = require('./node/leveldb')
 var fetch = require('./node/fetchInfo')
-var socket = require('./socket')
+var socket = require('./node/socket')
 
 //initialize server
 var server = http.createServer(function(req, res) {
@@ -12,7 +13,8 @@ var server = http.createServer(function(req, res) {
   write(res, req.url)
 }).listen(config.port, config.ip)
 console.log('server running on port '+config.port+'.')
-
+//create new websocket
+socket.createNew(server)
 
 function callJSON(res) {
   var waitForData = setInterval(function() {
@@ -31,8 +33,6 @@ function write(res, file, options) {
     file = 'index.html'
     //update db
     db.checkForUpdate()
-    //create new websocket
-    socket.createNew('ws', server)
   }
   else if (file.match('bannock_weather.json') ) {
     return callJSON(res)
