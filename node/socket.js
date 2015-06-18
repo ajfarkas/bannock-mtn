@@ -1,4 +1,4 @@
-var WebSocket = require('socket.io')
+var socketIO = require('socket.io')
 var levelup = require('levelup')
 
 var config = require('./config')
@@ -7,7 +7,7 @@ var socket = {}
 
 //create new socket with full functionality
 socket.createNew = function(server) {
-  var io = WebSocket(server)
+  var io = socketIO(server)
   console.log('new ws')
 
   io.on('connection', function connection(client) {

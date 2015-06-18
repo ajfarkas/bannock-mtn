@@ -11,8 +11,16 @@ var socket = require('./node/socket')
 var server = http.createServer(function(req, res) {
   //serve views
   write(res, req.url)
-}).listen(config.port)
+}).listen(config.port, config.ip)
 console.log('server running on port '+config.port+'.')
+
+server.on('upgrade', function(req, socket, head) {
+  socket.write('HTTP/1.1 101 Web Socket Protocol Handshake\r\n' +
+               'Upgrade: WebSocket\r\n' +
+               'Connection: Upgrade\r\n' +
+               '\r\n');
+})
+
 //create new websocket
 socket.createNew(server)
     
