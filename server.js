@@ -15,7 +15,7 @@ var server = http.createServer(function(req, res) {
 console.log('server running on port '+config.port+'.')
 //create new websocket
 socket.createNew(server)
-
+    
 function callJSON(res) {
   var waitForData = setInterval(function() {
     console.log('waiting...')

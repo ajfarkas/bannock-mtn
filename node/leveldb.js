@@ -1,5 +1,5 @@
 var config = require('./config')
-var levelup = require('level-browserify')
+var levelup = require('levelup')
 var fetch = require('./fetchInfo')
 
 var db = levelup(config.db.weather)

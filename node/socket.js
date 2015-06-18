@@ -1,5 +1,5 @@
 var WebSocket = require('socket.io')
-var levelup = require('level-browserify')
+var levelup = require('levelup')
 
 var config = require('./config')
 var db = levelup(config.db.notes)

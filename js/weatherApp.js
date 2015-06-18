@@ -25,6 +25,7 @@ btn.on('click', function() {
   d3.event.preventDefault()
   var name = d3.select('#note-name').node(),
       msg = d3.select('#note-msg').node(),
+      loadMsg = d3.select('.load-msg'),
       date = new Date()
       note = {
         name: name.value,
@@ -33,6 +34,8 @@ btn.on('click', function() {
       }
   //send to server
   socket.emit('new note', note)
+  //clear any loading message
+  loadMsg.text('')
   //immediately post to this page
   addNote(note)
   // clear form
