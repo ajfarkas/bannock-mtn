@@ -3,10 +3,10 @@
 .DS_Store
 .sass-cache
 Gruntfile.js
-js/.module-cache
+public/js/.module-cache
 node_modules
 
 CLI_Node
 libs
-notesdb/*
-weatherdb/*
+db/notesdb/*
+db/weatherdb/*
