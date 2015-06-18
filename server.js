@@ -11,7 +11,7 @@ var socket = require('./node/socket')
 var server = http.createServer(function(req, res) {
   //serve views
   write(res, req.url)
-}).listen(config.port, config.ip)
+}).listen(config.port)
 console.log('server running on port '+config.port+'.')
 //create new websocket
 socket.createNew(server)
