@@ -14,8 +14,8 @@ app.get(/.*/, function(req, res) {
 })
 app.use(express.static('public') )
 
-var server = app.listen(config.port, config.ip)
-console.log('server running on port '+config.port+'.')
+var server = app.listen(config.host)
+console.log('server running on port '+config.host+'.')
 
 //create new websocket
 socket.createNew(server)
