@@ -9,10 +9,11 @@ var db = require('./node/leveldb')
 var fetch = require('./node/fetchInfo')
 var socket = require('./node/socket')
 
+updateDaily()
+
 app.get(/.*/, function(req, res) {
   write(res, req.url)
 })
-app.use(express.static('public') )
 
 var server = app.listen(config.port, config.ip)
 console.log('server running on port '+config.port+'.')
@@ -35,8 +36,6 @@ function callJSON(res) {
 function write(res, file, options) {
   if (file == '/') {
     file = __dirname+'/public/index.html'
-    //update db
-    db.checkForUpdate()
   }
   else if (file.match('bannock_weather.json') ) {
     return callJSON(res)
@@ -51,4 +50,24 @@ function write(res, file, options) {
     res.write(data)
     res.end()
   })
+}
+
+//update db on regular basis
+function updateDaily() {
+  db.checkForUpdate()
+  //get last second of today
+  var lastUpdate = new lastUpdate()
+  lastUpdate.setHours(23)
+  lastUpdate.setMinutes(59)
+  lastUpdate.setSeconds(59)
+  lastUpdate.setMilliseconds(999)
+  
+  //update no later than 2am
+  var updateDaily = setInterval(function() {
+    var today = new Date()
+    if (today > lastUpdate) {
+      db.checkForUpdate()
+      lastUpdate = today
+    }
+  }, 7200000)
 }

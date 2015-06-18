@@ -72,7 +72,7 @@ fetch.concatAll = function(db, options, range) {
   //read each db entry, push to result array, save to new file
   range.forEach(function(date) {
     db.get(date, {valueEncoding: 'json'}, function(err, value) {
-      if (err) throw err
+      if (err) console.error(err)
       //each JSON object for this date
       value.forEach(function(datum) {
         var d = {}
