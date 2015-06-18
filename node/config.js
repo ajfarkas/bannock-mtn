@@ -2,7 +2,7 @@ var env = process.env.NODE_ENV || 'development'
 
 var config = {
   development: {
-    host: 8008,
+    port: 8008,
     ip: '127.0.0.1',
     db: {
       weather: './db/weatherdb',
@@ -12,9 +12,8 @@ var config = {
     prettyHtml: true
   },
   production: {
-    host: 
-      process.env.OPENSHIFT_NODEJS_IP+":"+process.env.OPENSHIFT_NODEJS_PORT
-      || '127.0.0.1:8080',
+    port: process.env.OPENSHIFT_NODEJS_PORT || 9000,
+    ip: process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1:9000',
     db: {
       weather: './db/weatherdb',
       notes: './db/notesdb'
