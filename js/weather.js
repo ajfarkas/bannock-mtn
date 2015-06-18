@@ -245,7 +245,8 @@ function relHumidity(temp, dewpt, farenheit) {
 function findAnswer(value) {
   hideOthers(value)
   var node = d3.select('.'+value+'-text')
-  if (node.html().length === 0) {
+  //if there is a reponse
+  if (node.node() && node.html().length === 0) {
     //check which question is asked
     if (value == 'jacket') {
       var wkAvgHigh = d3.mean(weather.range, function(d, i){ if(i < 7)return d.high }),

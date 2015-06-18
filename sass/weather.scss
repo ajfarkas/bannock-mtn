@@ -28,6 +28,10 @@ h3 {
     size: rem(15);
   }
 }
+h4 {
+  color: #45A0F8;
+  font-size: 22px;
+}
 
 .hidden { display: none !important; }
 
@@ -161,20 +165,89 @@ path, line {
   font-size: rem(20);
 }
 
+/*Chat*/
+#notes-container {
+  box-sizing: border-box;
+  padding: 40px 0;
+
+  & > * {
+    width: 480px;
+    margin: 0 auto;
+    max-height: 60vh;
+  }
+}
+
 /*Chat input*/
+#notes-container form {
+  position: relative;
+}
+
 #note-name,
 #note-msg {
   background-color: transparent;
-  box-shadow: inset 0 -1px 0 0 black;
+}
+#note-name { 
+  width: 160px;
+    //underline for two fields
+  box-shadow: inset 0 -1px 0 0 black, 0 14px white, 0 15px black;
 }
 #note-msg {
   @include appearance(none);
+  position: relative;
+  top: -14px;
   vertical-align: top;
-  text-decoration: underline;
-  min-height: 1.6rem;
-  width: 200px;
+  width: 100%;
+  height: rem(13);
   resize: none;
+  text-decoration: underline;
+  text-indent: 42px;
+    //IE hack to remove scrollbars
+  overflow: auto; 
 }
+
+input[type="submit"] {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  padding: 6px;
+  border-radius: 4px;
+  background-color: #45A0F8;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/*Chat output*/
+.notes-box {
+  overflow-y: scroll;
+  box-shadow: 0 1px 7px -3px inset;
+}
+
+.load-msg {
+  text-align: center;
+}
+.note {
+  padding: 10px 5px 0;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid lightgrey;
+  }
+}
+.name,
+.date {
+  display: inline-block;
+}
+.name {
+  font-weight: 600;
+}
+.date {
+  margin-right: rem(8);
+  font-weight: 300;
+}
+.note-text {
+  margin: 5px 0 10px;
+}
+
 
 
 

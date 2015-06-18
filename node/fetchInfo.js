@@ -52,6 +52,9 @@ fetch.getHistory = function(db, date, concat) {
               fetch.concatAll(db, concat[0], concat[1])
             }
           })
+        } else {
+          //free up db for other uses.
+          db.close()
         }
       }) //end db.put
 
@@ -85,6 +88,8 @@ fetch.concatAll = function(db, options, range) {
       rangeLen--
       if (rangeLen <= 0) {
         console.log('concat done.')
+        //free up db for other uses.
+        db.close()
         return fetch.data = result
       }
     })

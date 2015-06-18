@@ -26,16 +26,13 @@
   <h2>A Predictive Comfort Model for Non-Native Sapiens</h2>
   <fieldset id="mission">
     <select name="mission">
-      <!-- <option value="chat">what's going on at The Land?</option> -->
+      <option value="chat">What's going on at The Land?</option>
       <option value="jacket">Should I pack my big down jacket?</option>
       <option value="rain">Should I bring an umbrella?</option>
       <option value="towel">Do I need my towel?</option>
     </select>
   </fieldset>
-  <div class="response-container">
-    <!-- <div class="chat response">
-      <p class="empty">Nothing brewing just yet.</p>
-    </div> -->
+  <section class="response-container">
     <div class="jacket-graph graph response jacket hidden">
       <h3>Daily Temperature Range, in &deg;F</h3>
     </div
@@ -45,19 +42,23 @@
     </div
     ><div class="rain-text text response rain hidden"></div>
     <div class="towel-text text response towel hidden"></div>
-  </div>
-  <section id="notes-container" class="not-loaded">
-    <div class="notes-box">
-      <p class="load-msg">comments not loaded.</p>
+  
+    <div id="notes-container" class="chat response">
+      <form>
+        <h4>Leave a note:</h4>
+        <fieldset id="note-input">
+          <label for="note-name">Name:</label>
+          <input id="note-name" type="text" required="true"></input>
+          <br/>
+          <label for="note-msg">Note:</label>
+          <textarea id="note-msg" required="true" spellcheck="on" value=" "></textarea>
+          <input type="submit" value="submit"/>
+        </fieldset>
+      </form>
+      <div class="notes-box">
+        <p class="load-msg">Loading Notes.</p>
+      </div>
     </div>
-    <h4>Leave a note:</h4>
-    <fieldset id="note-input">
-      <label for="note-name">Name</label>
-      <input id="note-name" type="text" required="true"></input>
-      <label for="note-msg">Note</label>
-      <textarea id="note-msg" required="true" spellcheck="on"></textarea>
-      <button type="button">Submit</button>
-    </fieldset>
   </section>
 
 </body>

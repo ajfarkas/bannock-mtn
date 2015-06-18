@@ -2,9 +2,11 @@
 
 .DS_Store
 .sass-cache
+Gruntfile.js
 js/.module-cache
 node_modules
 
 CLI_Node
 libs
-weatherdb/*
+db/notesdb/*
+db/weatherdb/*

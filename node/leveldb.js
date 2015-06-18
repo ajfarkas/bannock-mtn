@@ -2,9 +2,8 @@ var config = require('./config')
 var levelup = require('level-browserify')
 var fetch = require('./fetchInfo')
 
-var db = levelup(config.db)
+var db = levelup(config.db.weather)
 var dbExport = {}
-
 var dataOptions = ['date', 'tempi', 'dewpti', 'wspdi', 'precip_ratei']
 
 dbExport.delete = function(range) {
