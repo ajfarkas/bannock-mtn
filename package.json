@@ -6,6 +6,7 @@
   "README": "",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.12.4",
     "leveldown": "~1.1.0",
     "levelup": "^1.2.0",
     "marked": "^0.3.3",

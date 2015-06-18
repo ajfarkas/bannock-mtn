@@ -1,25 +1,21 @@
 var http = require('http')
+var express = require('express')
 var fs = require('fs')
 var mime = require('mime')
 
+var app = express()
 var config = require('./node/config')
 var db = require('./node/leveldb')
 var fetch = require('./node/fetchInfo')
 var socket = require('./node/socket')
 
-//initialize server
-var server = http.createServer(function(req, res) {
-  //serve views
+app.get(/.*/, function(req, res) {
   write(res, req.url)
-}).listen(config.port, config.ip)
-console.log('server running on port '+config.port+'.')
-
-server.on('upgrade', function(req, socket, head) {
-  socket.write('HTTP/1.1 101 Web Socket Protocol Handshake\r\n' +
-               'Upgrade: WebSocket\r\n' +
-               'Connection: Upgrade\r\n' +
-               '\r\n');
 })
+app.use(express.static('public') )
+
+var server = app.listen(config.port, config.ip)
+console.log('server running on port '+config.port+'.')
 
 //create new websocket
 socket.createNew(server)
@@ -38,7 +34,7 @@ function callJSON(res) {
 
 function write(res, file, options) {
   if (file == '/') {
-    file = 'index.html'
+    file = __dirname+'/public/index.html'
     //update db
     db.checkForUpdate()
   }
@@ -46,7 +42,7 @@ function write(res, file, options) {
     return callJSON(res)
   }
   else 
-    file = file.replace('/', '')
+    file = file.replace('/', __dirname+'/public/')
 
   options = options || null
   fs.readFile(file, options, function(err, data) {

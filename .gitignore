@@ -8,4 +8,5 @@ node_modules
 
 CLI_Node
 libs
-db/*
+notesdb/*
+weatherdb/*
