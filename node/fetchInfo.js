@@ -81,7 +81,6 @@ fetch.concatAll = function(db, options, range) {
           //add file data to result array
           d[key] = datum[key]
         })
-        //TODO: regular JSON?
         result.push(d)
       })
       //reduce counter by 1

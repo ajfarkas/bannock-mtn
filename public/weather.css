@@ -47,12 +47,19 @@ h1, h2 {
   text-align: center; }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.7rem;
   text-transform: uppercase; }
+  @media only screen and (min-width: 400px) {
+    h1 {
+      font-size: 3rem; } }
 
 h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px; }
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  padding: 0 10px; }
+  @media only screen and (min-width: 400px) {
+    h2 {
+      font-size: 1.8rem; } }
 
 h3 {
   position: absolute;
@@ -94,7 +101,8 @@ h4 {
 
 /*Question dropdown*/
 #mission {
-  width: 55rem;
+  max-width: 55rem;
+  width: 90vw;
   margin: 0 auto; }
 
 select {
@@ -106,19 +114,27 @@ select {
   background-color: white;
   background-image: url(images/sprites.png);
   background-repeat: no-repeat;
-  background-position: calc(100% - 1.1rem) 1.3rem;
-  background-size: 0.9rem;
+  background-position: calc(100% - 1.1rem) 1.2rem;
+  background-size: 0.7rem;
   border: 1px solid #666;
   border-radius: 4px;
   font-family: HelveticaNeue, sans-serif;
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 600; }
+  @media only screen and (min-width: 400px) {
+    select {
+      background-position: calc(100% - 1.1rem) 1.3rem;
+      background-size: 0.9rem;
+      font-size: 2rem; } }
 
 /*Notes/Graph area*/
 .response-container {
-  width: 70%;
+  width: 90%;
   margin: 40px auto 0;
   background-color: white; }
+  @media only screen and (min-width: 720px) {
+    .response-container {
+      width: 70%; } }
 
 .empty {
   padding: 100px 0;
@@ -127,9 +143,12 @@ select {
 .graph {
   position: relative;
   display: inline-block;
-  width: 54%;
+  width: 96%;
   margin: 2%;
   background-color: aliceblue; }
+  @media only screen and (min-width: 980px) {
+    .graph {
+      width: 54%; } }
 
 .rain-graph {
   background-image: linear-gradient(to bottom, #dac4be 30%, #d4e0ea 80%); }
@@ -182,20 +201,28 @@ path, line {
 
 /*Text of responses*/
 .text {
-  display: inline-block;
-  width: 40%;
+  display: block;
+  width: 100%;
   box-sizing: border-box;
-  padding: 3% 2%;
+  padding: 3% 5%;
   vertical-align: top; }
+  @media only screen and (min-width: 980px) {
+    .text {
+      display: inline-block;
+      width: 40%;
+      padding: 3% 2%; } }
 
 .towel-text {
   width: 94%; }
 
 .response-text {
-  line-height: 1;
-  font-size: 6rem;
+  font-size: 3.1rem;
   font-weight: 600;
+  line-height: 1;
   color: #45A0F8; }
+  @media only screen and (min-width: 640px) {
+    .response-text {
+      font-size: 4.9vw; } }
 
 .response-more {
   margin-top: 1rem;
@@ -204,11 +231,14 @@ path, line {
 /*Chat*/
 #notes-container {
   box-sizing: border-box;
-  padding: 40px 0; }
+  padding: 20px 10px 40px; }
+  @media only screen and (min-width: 570px) {
+    #notes-container {
+      padding: 40px 0; } }
   #notes-container > * {
-    width: 480px;
-    margin: 0 auto;
-    max-height: 60vh; }
+    max-width: 480px;
+    max-height: 60vh;
+    margin: 0 auto; }
 
 /*Chat input*/
 #notes-container form {

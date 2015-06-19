@@ -40,6 +40,7 @@ btn.on('click', function() {
   // clear form
   name.value = ''
   msg.value = ''
+  textarea.style('height', '13px')
 })
 
 //insert note into list

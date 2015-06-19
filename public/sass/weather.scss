@@ -10,12 +10,19 @@ h1, h2 {
   text-align: center; 
 }
 h1 {
-  font-size: rem(30);
+  font-size: rem(27);
   text-transform: uppercase;
+  @include breakpoint(400) {
+    font-size: rem(30);
+  }
 }
 h2 {
-  font-size: rem(18);
+  font-size: rem(14);
   margin-bottom: 10px;
+  padding: 0 10px;
+  @include breakpoint(400) {
+    font-size: rem(18);
+  }
 }
 h3 {
   position: absolute;
@@ -46,7 +53,8 @@ h4 {
 
 /*Question dropdown*/
 #mission {
-  width: rem(550);
+  max-width: rem(550);
+  width: 90vw;
   margin: 0 auto;
 }
 
@@ -58,195 +66,29 @@ select {
     color: white;
     image: url(images/sprites.png);
     repeat: no-repeat;
-    position: calc(100% - 1.1rem) rem(13);
-    size: rem(9);
+    position: calc(100% - 1.1rem) rem(12);
+    size: rem(7);
   } 
   border: 1px solid #666;
   border-radius: 4px;
   font:{
     family: HelveticaNeue, sans-serif;
-    size: rem(20);
+    size: rem(14);
     weight: 600;
   }
-}
-
-/*Notes/Graph area*/
-.response-container {
-  width: 70%;
-  margin: 40px auto 0;
-  background-color: white;
-}
-
-.empty {
-  padding: 100px 0;
-  text-align: center;
-}
-
-.graph {
-  position: relative;
-  display: inline-block;
-  width: 54%;
-  margin: 2%;
-  background-color: aliceblue;
-}
-.rain-graph {
-  background-image: linear-gradient(
-    to bottom,
-    $grad-hot 30%,
-    $grad-cold 80%
-  );
-}
-.jacket-graph {
-  background-image: linear-gradient(
-    to bottom, 
-    $grad-hot 0%,
-    $grad-cold 50%
-  );
-}
-
-/*D3 Styles*/
-svg { margin: -2px 0; }
-
-.day {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  background: white;
-}
-
-text { 
-  font:{
-    size: rem(4);
-    weight: 300;
-  }
-  &.title { font-size: rem(13);}
-}
-
-path, line {
-  fill: none;
-  stroke-width: .3px;
-}
-
-#rain { fill: $grad-cold; }
-.high, .low { stroke: none; }
-.high { fill: url(#hotCold); }
-.low { fill: white; }
-.humidity { 
-  stroke: black; 
-  fill: url(#rain);
-}
-
-.tick line,
-.domain { stroke: $color2; }
-
-.tick text { fill: $color2; }
-
-/*Text of responses*/
-.text {
-  display: inline-block;
-  width: 40%;
-  box-sizing: border-box;
-  padding: 3% 2%;
-  vertical-align: top;
-}
-.towel-text {
-  width: 94%;
-}
-.response-text {
-  line-height: 1;
-  font: {
-    size: rem(60);
-    weight: 600;
-  }
-  color: #45A0F8;
-}
-.response-more {
-  margin-top: rem(10);
-  font-size: rem(20);
-}
-
-/*Chat*/
-#notes-container {
-  box-sizing: border-box;
-  padding: 40px 0;
-
-  & > * {
-    width: 480px;
-    margin: 0 auto;
-    max-height: 60vh;
+  @include breakpoint(400) {
+    background:{
+      position: calc(100% - 1.1rem) rem(13);
+      size: rem(9);
+    }
+    font-size: rem(20);
   }
 }
 
-/*Chat input*/
-#notes-container form {
-  position: relative;
-}
-
-#note-name,
-#note-msg {
-  background-color: transparent;
-}
-#note-name { 
-  width: 160px;
-    //underline for two fields
-  box-shadow: inset 0 -1px 0 0 black, 0 14px white, 0 15px black;
-}
-#note-msg {
-  @include appearance(none);
-  position: relative;
-  top: -14px;
-  vertical-align: top;
-  width: 100%;
-  height: rem(13);
-  resize: none;
-  text-decoration: underline;
-  text-indent: 42px;
-    //IE hack to remove scrollbars
-  overflow: auto; 
-}
-
-input[type="submit"] {
-  position: absolute;
-  top: 5px;
-  right: 0;
-  padding: 6px;
-  border-radius: 4px;
-  background-color: #45A0F8;
-  color: white;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-/*Chat output*/
-.notes-box {
-  overflow-y: scroll;
-  box-shadow: 0 1px 7px -3px inset;
-}
-
-.load-msg {
-  text-align: center;
-}
-.note {
-  padding: 10px 5px 0;
-
-  &:not(:last-of-type) {
-    border-bottom: 1px solid lightgrey;
-  }
-}
-.name,
-.date {
-  display: inline-block;
-}
-.name {
-  font-weight: 600;
-}
-.date {
-  margin-right: rem(8);
-  font-weight: 300;
-}
-.note-text {
-  margin: 5px 0 10px;
-}
+//d3 and related responses
+@import 'graphs';
+//commenting system
+@import 'notes';
 
 
 

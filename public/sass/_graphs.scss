@@ -1,0 +1,108 @@
+/*Notes/Graph area*/
+.response-container {
+  width: 90%;
+  margin: 40px auto 0;
+  background-color: white;
+  @include breakpoint(720) {
+    width: 70%;
+  }
+}
+
+.empty {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.graph {
+  position: relative;
+  display: inline-block;
+  width: 96%;
+  margin: 2%;
+  background-color: aliceblue;
+  @include breakpoint(980) {
+    width: 54%;
+  }
+}
+.rain-graph {
+  background-image: linear-gradient(
+    to bottom,
+    $grad-hot 30%,
+    $grad-cold 80%
+  );
+}
+.jacket-graph {
+  background-image: linear-gradient(
+    to bottom, 
+    $grad-hot 0%,
+    $grad-cold 50%
+  );
+}
+
+/*D3 Styles*/
+svg { margin: -2px 0; }
+
+.day {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: white;
+}
+
+text { 
+  font:{
+    size: rem(4);
+    weight: 300;
+  }
+  &.title { font-size: rem(13);}
+}
+
+path, line {
+  fill: none;
+  stroke-width: .3px;
+}
+
+#rain { fill: $grad-cold; }
+.high, .low { stroke: none; }
+.high { fill: url(#hotCold); }
+.low { fill: white; }
+.humidity { 
+  stroke: black; 
+  fill: url(#rain);
+}
+
+.tick line,
+.domain { stroke: $color2; }
+
+.tick text { fill: $color2; }
+
+/*Text of responses*/
+.text {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3% 5%;
+  vertical-align: top;
+  @include breakpoint(980) {
+    display: inline-block;
+    width: 40%;
+    padding: 3% 2%;
+  }
+}
+.towel-text {
+  width: 94%;
+}
+.response-text {
+  font: {
+    size: rem(31);
+    weight: 600;
+  }
+  line-height: 1;
+  color: #45A0F8;
+  @include breakpoint(640) {
+    font-size: 4.9vw;
+  }
+}
+.response-more {
+  margin-top: rem(10);
+  font-size: rem(20);
+}

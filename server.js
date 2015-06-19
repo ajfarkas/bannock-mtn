@@ -55,8 +55,8 @@ function write(res, file, options) {
 //update db on regular basis
 function updateDaily() {
   db.checkForUpdate()
-  //get last second of today
-  var lastUpdate = new lastUpdate()
+  //get last millisecond of today
+  var lastUpdate = new Date()
   lastUpdate.setHours(23)
   lastUpdate.setMinutes(59)
   lastUpdate.setSeconds(59)
