@@ -167,10 +167,10 @@ svg {
   background: white; }
 
 text {
-  font-size: 0.4rem;
+  font-size: 6px;
   font-weight: 300; }
   text.title {
-    font-size: 1.3rem; }
+    font-size: 13px; }
 
 path, line {
   fill: none;

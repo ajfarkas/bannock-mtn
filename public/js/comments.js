@@ -3,7 +3,7 @@ var socket = io()
 
 var notesSect = d3.select('#notes-container'),
     notes = notesSect.select('.notes-box'),
-    btn = notesSect.select('input[type=submit'),
+    btn = notesSect.select('input[type=submit]'),
     textarea = d3.select('#notes-container').select('textarea'),
     textLen = 0
 

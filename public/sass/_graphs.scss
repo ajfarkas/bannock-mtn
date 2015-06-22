@@ -50,10 +50,10 @@ svg { margin: -2px 0; }
 
 text { 
   font:{
-    size: rem(4);
+    size: 6px;
     weight: 300;
   }
-  &.title { font-size: rem(13);}
+  &.title { font-size: 13px;}
 }
 
 path, line {

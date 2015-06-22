@@ -1280,7 +1280,7 @@ var socket = io()
 
 var notesSect = d3.select('#notes-container'),
     notes = notesSect.select('.notes-box'),
-    btn = notesSect.select('input[type=submit'),
+    btn = notesSect.select('input[type=submit]'),
     textarea = d3.select('#notes-container').select('textarea'),
     textLen = 0
 
@@ -1382,11 +1382,11 @@ var stations = {
 //config
 var s = {
   width: 200,
-  height: 120,
+  height: 140,
   m: {
     top: 20,
     right: 10,
-    bottom: 20,
+    bottom: 30,
     left: 20
   }
 }
@@ -1409,7 +1409,8 @@ console.log(data[0])
 
   data.forEach(function(d, i) {
     //use pretty date to account for DST
-    var date = new Date(d.date.pretty.replace('on ', ''))
+    var newPretty = d.date.pretty.replace(/(.*)\son\s(.*)/, '$2 $1')
+    var date = new Date(newPretty)
     date = new Date(date - offset)
     //add data to global var
     weather[i] = {
@@ -1435,7 +1436,7 @@ console.log(data[0])
       tempLow = {}
   weather.range = []
   weather.forEach(function(d) {
-    var date = d.dateISO.getFullYear()+'-'+(d.dateISO.getMonth() + 1)+'-'+d.dateISO.getDate()
+    var date = formatDate(d.dateISO)
     //if date is not in array, initialize date
     if (days.indexOf(date) == -1) {
       days.push(date)
@@ -1457,7 +1458,7 @@ console.log(data[0])
       high: tempHigh[date],
       low: tempLow[date],
       humidity: d3.mean(weather, function(d) { 
-       if(d.dateISO.getFullYear()+'-'+(d.dateISO.getMonth() + 1)+'-'+d.dateISO.getDate() == date)
+       if(formatDate(d.dateISO) == date)
         return d.humidity
       })
     })
@@ -1677,6 +1678,12 @@ function fillAnswer(container, response, secondary) {
       .attr('class', 'response-more')
       .text(secondary+'.')
   }
+}
+
+function formatDate(date) {
+  var month = ('0'+((date.getMonth() + 1)) ).substr(-2, 2)
+  var day = ('0'+date.getDate() ).substr(-2, 2)
+  return date.getFullYear()+'-'+month+'-'+day
 }
 
 

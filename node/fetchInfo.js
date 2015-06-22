@@ -87,9 +87,9 @@ fetch.concatAll = function(db, options, range) {
       rangeLen--
       if (rangeLen <= 0) {
         console.log('concat done.')
+        fetch.data = result
         //free up db for other uses.
-        db.close()
-        return fetch.data = result
+        return db.close()
       }
     })
   })
