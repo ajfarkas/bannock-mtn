@@ -8,7 +8,7 @@ var config = {
       weather: './db/weatherdb',
       notes: './db/notesdb'
     },
-    token: '9f206693050a1722',
+    token: 'null',
     prettyHtml: true
   },
   production: {
